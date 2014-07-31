@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>ejbrace-parent</artifactId>
+        <groupId>org.ferris.ejbrace</groupId>
+        <version>1.0.0.0-SNAPSHOT</version>
+    </parent>
+
+    <groupId>org.ferris.ejbrace</groupId>
+    <artifactId>ejbrace-service-ear</artifactId>
+    <version>1.0.0.0-SNAPSHOT</version>
+    <packaging>ear</packaging>
+
+    <name>ejbrace-service-ear</name>
+    
+    <properties>
+        <ferris.ejbrace-ejb.version>1.0.0.0-SNAPSHOT</ferris.ejbrace-ejb.version>
+    </properties>
+    
+    <dependencies>
+        <dependency>
+            <groupId>org.ferris.ejbrace</groupId>
+            <artifactId>ejbrace-ejb</artifactId>
+            <version>${ferris.ejbrace-ejb.version}</version>
+            <type>ejb</type>
+        </dependency>
+    </dependencies>       
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-ear-plugin</artifactId>                
+                <configuration>
+                    <archive>
+                        <addMavenDescriptor>false</addMavenDescriptor>
+                    </archive>
+                    <version>7</version>
+                    <applicationName>planets</applicationName>                    
+                    <modules>
+                        <ejbModule>
+                            <groupId>org.ferris.ejbrace</groupId>
+                            <artifactId>ejbrace-ejb</artifactId>
+                        </ejbModule>
+                    </modules>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

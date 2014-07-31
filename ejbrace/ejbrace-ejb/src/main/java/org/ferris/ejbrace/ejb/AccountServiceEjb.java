@@ -1,19 +1,19 @@
 package org.ferris.ejbrace.ejb;
 
+import javax.ejb.EJB;
 import javax.ejb.EJBException;
 import javax.ejb.Stateless;
-import javax.ejb.LocalBean;
-import org.ferris.ejbrace.model.Account;
 
 /**
  *
  * @author Michael Remijan <mjremijan@yahoo.com> [@mjremijan]
  */
 @Stateless
+//@EJB(name="java:global/planets/mercury", beanInterface=AccountService.class)
 public class AccountServiceEjb implements AccountService {
 
     @Override
-    public Account findAccount(String id) {
+    public String findAccount(String id) {
         throw new EJBException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
