@@ -1,12 +1,38 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>org.ejbrace</groupId>
-  <artifactId>ejbrace</artifactId>
-  <version>1.0.0.0-SNAPSHOT</version>
-  <packaging>pom</packaging>
-  <name>ejbrace-parent</name>
-  <description>Parent project for EJB Race</description>
-  <modules>
-  <module>ejbrace-jaxws</module>
-  </modules>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.ferris.ejbrace</groupId>
+    <artifactId>ejbrace-parent</artifactId>
+    <version>1.0.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>ejbrace-parent</name>
+    <description>
+        Parent project for EJB Race.  Since this project is going into a
+        GIT repository, the easiest way to get the multiple projects into
+        the repo is to create this top-level pom package and put all of
+        the subprojects underneath it as modules.
+    </description>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.7</maven.compiler.source>
+        <maven.compiler.target>1.7</maven.compiler.target>
+    </properties>
+    <modules>
+        <module>ejbrace-model</module>
+<!--        <module>>ejbrace-jaxws</module>        -->
+    </modules>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.5</version>
+                <configuration>
+                    <archive>
+                        <addMavenDescriptor>false</addMavenDescriptor>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
