@@ -25,7 +25,6 @@
             <artifactId>ejbrace-ejb</artifactId>
             <version>${ferris.ejbrace-ejb.version}</version>
             <type>ejb-client</type>
-            <classifier>client</classifier>
         </dependency>
         
         <dependency>

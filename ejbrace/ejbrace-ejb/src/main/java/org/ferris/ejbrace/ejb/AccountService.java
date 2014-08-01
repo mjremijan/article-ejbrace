@@ -1,6 +1,7 @@
 package org.ferris.ejbrace.ejb;
 
 import javax.ejb.Remote;
+import org.ferris.ejbrace.model.Account;
 
 /**
  *
@@ -8,5 +9,5 @@ import javax.ejb.Remote;
  */
 @Remote
 public interface AccountService {
-    String findAccount(String id);
+    Account findAccount(String id);
 }

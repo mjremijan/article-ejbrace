@@ -22,7 +22,8 @@
         <module>ejbrace-ejb</module>        
         <module>ejbrace-service-ear</module>
     <module>ejbrace-web</module>
-  </modules>
+        <module>ejbrace-web-ear</module>
+    </modules>
 
     <dependencyManagement>
         <dependencies>
@@ -117,10 +118,13 @@
                 <artifactId>maven-ejb-plugin</artifactId>
                 <configuration>
                     <ejbVersion>3.2</ejbVersion>
+                    <generateClient>true</generateClient>
                     <archive>
                         <addMavenDescriptor>false</addMavenDescriptor>
-                    </archive> 
-                    <generateClient>true</generateClient>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                        </manifest>                          
+                    </archive>                                       
                 </configuration>
             </plugin>
         </plugins>
