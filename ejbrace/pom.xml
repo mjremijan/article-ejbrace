@@ -21,7 +21,8 @@
         <module>ejbrace-model</module>
         <module>ejbrace-ejb</module>        
         <module>ejbrace-service-ear</module>
-    </modules>
+    <module>ejbrace-web</module>
+  </modules>
 
     <dependencyManagement>
         <dependencies>
@@ -31,6 +32,12 @@
                 <version>7.0</version>
                 <scope>provided</scope>
             </dependency>
+            <dependency>
+                <groupId>javax</groupId>
+                <artifactId>javaee-web-api</artifactId>
+                <version>7.0</version>
+                <scope>provided</scope>
+            </dependency>             
         </dependencies>
     </dependencyManagement>
        
@@ -70,6 +77,16 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-ear-plugin</artifactId>
                     <version>2.9</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>2.3</version>
+                    <configuration>
+                        <archive>
+                            <addMavenDescriptor>false</addMavenDescriptor>
+                        </archive>
+                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
