@@ -1,0 +1,17 @@
+<!DOCTYPE glassfish-web-app PUBLIC 
+    "-//GlassFish.org//DTD GlassFish Application Server 3.1 Servlet 3.0//EN" 
+    "http://glassfish.org/dtds/glassfish-web-app_3_0-1.dtd"
+>
+<glassfish-web-app>
+    <ejb-ref>    
+        <!-- From web.xml -->
+        <ejb-ref-name>
+            ejb/Red
+        </ejb-ref-name> 
+        
+        <!-- Bean is remote so IIOP config to get it -->
+        <jndi-name>
+            corbaname:iiop:tumbleweed:3700#java:global/ejbrace-service/ejb/AccountServiceEjb!org.ferris.ejbrace.ejb.AccountService
+        </jndi-name>
+    </ejb-ref>     
+</glassfish-web-app>
