@@ -13,6 +13,7 @@ public class AccountServiceEjb implements AccountService {
 
     @Override
     public Account findAccount(String id) {
+        System.out.println("AccountServiceEjb [" + id + "] !!");
         return new Account(String.format("0000%s", id));
     }
 

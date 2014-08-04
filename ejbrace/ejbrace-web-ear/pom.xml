@@ -43,7 +43,7 @@
                         <webModule>
                             <groupId>org.ferris.ejbrace</groupId>
                             <artifactId>ejbrace-web</artifactId>
-                            <contextRoot>ejbrace</contextRoot>
+                            <contextRoot>/ejbrace</contextRoot>
                         </webModule>
                     </modules>
                 </configuration>

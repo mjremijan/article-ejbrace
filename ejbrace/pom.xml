@@ -23,6 +23,7 @@
         <module>ejbrace-service-ear</module>
     <module>ejbrace-web</module>
         <module>ejbrace-web-ear</module>
+        <module>SocketTest</module>
     </modules>
 
     <dependencyManagement>

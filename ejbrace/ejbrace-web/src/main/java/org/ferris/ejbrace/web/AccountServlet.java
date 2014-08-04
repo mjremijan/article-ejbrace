@@ -2,6 +2,8 @@ package org.ferris.ejbrace.web;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -9,7 +11,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.ws.rs.Path;
 import org.ferris.ejbrace.ejb.AccountService;
 import org.ferris.ejbrace.model.Account;
 
@@ -29,19 +30,27 @@ public class AccountServlet extends HttpServlet {
     AccountService accountService;
 
     @Override
-    @Path("variable")
-    public void service(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         PrintWriter writer
                 = response.getWriter();
         writer.println("<html>");
         writer.println("<body>");
 
         try {
+            writer.printf("<p>Hello Account!</p>\n"); 
+            
+            SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy hh:mm:ss a");
+            writer.printf("<p>time=\"%s\"</p>\n", sdf.format(Calendar.getInstance().getTime()));
+            
+            writer.printf("<p>lookup=\"%s\"</p>\n", redLookup);
+            
+            writer.printf("<p>accountService variable = %s</p>\n", accountService.toString());
+            
             Account account
                     = accountService.findAccount("123");
-            writer.printf("<p>Hello Account!</p>\n");           
-            writer.printf("<p>name=\"%s\"</p>\n", redLookup);
-            writer.printf("<p>accountService variable = %s</p>\n", accountService.toString());
+                      
+            writer.printf("<p>account.getId() = %s</p>\n", account.getId());
+
         } catch (Throwable t) {
             t.printStackTrace(writer);
         }
