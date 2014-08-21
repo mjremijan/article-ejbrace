@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Random;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -46,9 +47,14 @@ public class AccountServlet extends HttpServlet {
             
             writer.printf("<p>accountService variable = %s</p>\n", accountService.toString());
             
+            Random r = new Random();
+            int id = r.nextInt(1000) + 1;
+            
             Account account
-                    = accountService.findAccount("123");
-                      
+                    = accountService.findAccount(String.format("%d", id));
+
+            System.out.println("AccountServlet [" + account.getId() + "] !!");
+
             writer.printf("<p>account.getId() = %s</p>\n", account.getId());
 
         } catch (Throwable t) {
