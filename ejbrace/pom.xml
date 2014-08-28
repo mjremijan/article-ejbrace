@@ -23,7 +23,7 @@
         <module>ejbrace-service-ear</module>
         <module>ejbrace-web</module>
         <module>ejbrace-web-ear</module>
-    <module>ejbrace-servlet</module>
+        <module>ejbrace-servlet</module>
   </modules>
 
     <dependencyManagement>
@@ -51,8 +51,7 @@
         </dependency>
     </dependencies>
     
-    <build>
-        
+    <build>        
         <pluginManagement>
             <plugins>
                 <plugin>
@@ -88,6 +87,7 @@
                         <archive>
                             <addMavenDescriptor>false</addMavenDescriptor>
                         </archive>
+                        <failOnMissingWebXml>true</failOnMissingWebXml>
                     </configuration>
                 </plugin>
             </plugins>

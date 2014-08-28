@@ -1,6 +1,8 @@
 package org.ferris.ejbrace.servlet;
 
 import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Michael Remijan <mjremijan@yahoo.com> [@mjremijan]
+ * @author Michael Remijan mjremijan@yahoo.com @mjremijan
  */
 @WebServlet(name = "AccountServiceServlet", urlPatterns = {"/AccountServiceServlet"})
 public class AccountServiceServlet extends HttpServlet {
@@ -24,20 +26,14 @@ public class AccountServiceServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet AccountServiceServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet AccountServiceServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+    {
+        response.setContentType("application/x-java-serialized-object");
+        try (
+            OutputStream os = response.getOutputStream();
+            ObjectOutputStream oos = new ObjectOutputStream(os);
+        ){
+            oos.writeObject(new Object());
         }
     }
 
