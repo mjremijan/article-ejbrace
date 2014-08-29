@@ -16,6 +16,7 @@
     
     <properties>
         <ferris.ejbrace-ejb.version>1.0.0.0-SNAPSHOT</ferris.ejbrace-ejb.version>
+        <ferris.ejbrace-servlet.version>1.0.0.0-SNAPSHOT</ferris.ejbrace-servlet.version>
     </properties>
     
     <dependencies>
@@ -24,6 +25,12 @@
             <artifactId>ejbrace-ejb</artifactId>
             <version>${ferris.ejbrace-ejb.version}</version>
             <type>ejb</type>
+        </dependency>
+        <dependency>
+            <groupId>org.ferris.ejbrace</groupId>
+            <artifactId>ejbrace-servlet</artifactId>
+            <version>${ferris.ejbrace-servlet.version}</version>
+            <type>war</type>
         </dependency>
     </dependencies>       
 
@@ -44,6 +51,11 @@
                             <groupId>org.ferris.ejbrace</groupId>
                             <artifactId>ejbrace-ejb</artifactId>
                         </ejbModule>
+                        <webModule>
+                            <groupId>org.ferris.ejbrace</groupId>
+                            <artifactId>ejbrace-servlet</artifactId>
+                            <contextRoot>/ejbrace-servlet</contextRoot>
+                        </webModule>
                     </modules>
                 </configuration>
             </plugin>

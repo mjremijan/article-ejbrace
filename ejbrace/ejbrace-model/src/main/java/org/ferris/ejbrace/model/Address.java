@@ -1,7 +1,10 @@
 package org.ferris.ejbrace.model;
 
 import java.io.Serializable;
-
+/**
+ *
+ * @author Michael Remijan mjremijan@yahoo.com @mjremijan
+ */
 public class Address implements Serializable {
     private static final long serialVersionUID = 13984327509734L;
     private String address1;

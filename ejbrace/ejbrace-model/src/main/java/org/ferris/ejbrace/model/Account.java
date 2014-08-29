@@ -5,7 +5,10 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-
+/**
+ *
+ * @author Michael Remijan mjremijan@yahoo.com @mjremijan
+ */
 public class Account implements Serializable {
 
     private static final long serialVersionUID = 1769869876986L;

@@ -1,7 +1,10 @@
 package org.ferris.ejbrace.model;
 
 import java.io.Serializable;
-
+/**
+ *
+ * @author Michael Remijan mjremijan@yahoo.com @mjremijan
+ */
 public class Phone implements Serializable {
     private static final long serialVersionUID = 928034759823745091L;
     private final PhoneType type;

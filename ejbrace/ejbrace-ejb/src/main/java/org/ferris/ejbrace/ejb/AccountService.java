@@ -9,5 +9,5 @@ import org.ferris.ejbrace.model.Account;
  */
 @Remote
 public interface AccountService {
-    Account findAccount(String id);
+    Account getAccount();
 }

@@ -4,7 +4,10 @@ import java.util.UUID;
 import static org.ferris.ejbrace.model.PhoneType.Home;
 import static org.ferris.ejbrace.model.PhoneType.Mobile;
 import static org.ferris.ejbrace.model.PhoneType.Work;
-
+/**
+ *
+ * @author Michael Remijan mjremijan@yahoo.com @mjremijan
+ */
 public class AccountSingleton {
 
     public static class AccountHolder {
