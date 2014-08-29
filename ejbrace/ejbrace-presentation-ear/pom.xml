@@ -8,11 +8,11 @@
     </parent>
     
     <groupId>org.ferris.ejbrace</groupId>
-    <artifactId>ejbrace-web-ear</artifactId>
+    <artifactId>ejbrace-presentation-ear</artifactId>
     <version>1.0.0.0-SNAPSHOT</version>
     <packaging>ear</packaging>
 
-    <name>ejbrace-web-ear</name>
+    <name>ejbrace-presentation-ear</name>
     
     <properties>
         <ferris.ejbrace-web.version>1.0.0.0-SNAPSHOT</ferris.ejbrace-web.version>
@@ -43,7 +43,7 @@
                         <webModule>
                             <groupId>org.ferris.ejbrace</groupId>
                             <artifactId>ejbrace-web</artifactId>
-                            <contextRoot>/ejbrace</contextRoot>
+                            <contextRoot>/ejbrace-web</contextRoot>
                         </webModule>
                     </modules>
                 </configuration>

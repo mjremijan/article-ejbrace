@@ -23,14 +23,14 @@
         <module>ejbrace-model</module>
         
         <!-- Service tier -->
-        <module>ejbrace-ejb</module>      
-        <module>ejbrace-servlet</module>  
-        <module>ejbrace-service-ear</module>
+        <module>ejbrace-ejb</module>
+        <module>ejbrace-service</module>
+        <module>ejbrace-business-ear</module>
         
         <!-- Presentation tier -->
         <module>ejbrace-web</module>
-        <module>ejbrace-web-ear</module>
-  </modules>
+        <module>ejbrace-presentation-ear</module>
+    </modules>
 
     <dependencyManagement>
         <dependencies>

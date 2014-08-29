@@ -26,7 +26,7 @@ public abstract class ServiceTemplateMethod {
 
         PrintWriter writer = response.getWriter();
         writer.println("<html>");
-        writer.println("<body>");
+        writer.println(String.format("<body style=\"%s\">", "background-color: rgb(191,191,191);"));
         writer.println(String.format("<h1>%s</h1>", getName()));
         writer.println(String.format("<p>Time: \"%s\"</p>", new SimpleDateFormat("MM-dd-yyyy hh:mm:ss a").format(Calendar.getInstance().getTime())));
         writer.println(String.format("<table>"));
