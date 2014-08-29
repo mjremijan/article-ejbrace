@@ -4,4 +4,10 @@
     <session-config>
         <session-timeout>1</session-timeout>
     </session-config>
+    <!--
+    <servlet-mapping>
+        <servlet-name>javax.ws.rs.core.Application</servlet-name>
+        <url-pattern>/services/*</url-pattern>
+    </servlet-mapping>
+    -->
 </web-app>

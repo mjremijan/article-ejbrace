@@ -8,6 +8,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.ServletResponse;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.ferris.ejbrace.model.Account;
 import org.ferris.ejbrace.web.util.Stopwatch;
 
@@ -26,17 +27,20 @@ public abstract class ServiceTemplateMethod
         Stopwatch sw 
             = new Stopwatch();
         
+        Account a 
+            = null;
+        
         for (int i = 1, imax=numberOfCalls.intValue(); i <= imax; i++) {
             System.out.printf("Make call %d of %d", i, imax);
             sw.start();
-            getAccount();
+            a = getAccount();
             sw.stop();
         }
 
-        print(response, sw);
+        print(response, sw, a);
     }
     
-    private final void print(ServletResponse response, Stopwatch sw) throws IOException 
+    private final void print(ServletResponse response, Stopwatch sw, Account account) throws IOException 
     {
         PrintWriter writer = response.getWriter();
         writer.println("<html>");
@@ -44,38 +48,88 @@ public abstract class ServiceTemplateMethod
         writer.println(String.format("<h1>%s</h1>", getName()));
         writer.println(String.format("<p>Time: \"%s\"</p>", new SimpleDateFormat("MM-dd-yyyy hh:mm:ss a").format(Calendar.getInstance().getTime())));
         writer.println("<p>Values are in milliseconds.</p>");
+        
         writer.println(String.format("<table>"));
         writer.println(String.format("<tr>"));
         {
-            writer.println(String.format("<td>Number of calls:</td>"));
-            writer.println(String.format("<td>%d</td>", sw.size()));
-        }
-        writer.println(String.format("</tr>"));
-        writer.println(String.format("<tr>"));
-        {
-            writer.println(String.format("<td>Total time:</td>"));
-            writer.println(String.format("<td>%d</td>", sw.getTotalTime()));
-        }
-        writer.println(String.format("</tr>"));
-        writer.println(String.format("<tr>"));
-        {
-            writer.println(String.format("<td>Average time:</td>"));
-            writer.println(String.format("<td>%.3f</td>", sw.getAverageTime()));
-        }
-        writer.println(String.format("</tr>"));
-        writer.println(String.format("<tr>"));
-        {
-            writer.println(String.format("<td>Min time:</td>"));
-            writer.println(String.format("<td>%d</td>", sw.getMinTime()));
-        }
-        writer.println(String.format("</tr>"));
-        writer.println(String.format("<tr>"));
-        {
-            writer.println(String.format("<td>Max time:</td>"));
-            writer.println(String.format("<td>%d</td>", sw.getMaxTime()));
-        }
-        writer.println(String.format("</tr>"));
+            //
+            // Lables
+            //
+            writer.println(String.format("<td>"));
+            {
+                writer.println(String.format("<table>"));
+                writer.println(String.format("<tr>"));
+                {
+                    writer.println(String.format("<td>Number of calls:</td>"));
+                }
+                writer.println(String.format("</tr>"));
+                writer.println(String.format("<tr>"));
+                {
+                    writer.println(String.format("<td>Total time:</td>"));
+                }
+                writer.println(String.format("</tr>"));
+                writer.println(String.format("<tr>"));
+                {
+                    writer.println(String.format("<td>Average time:</td>"));
+                }
+                writer.println(String.format("</tr>"));
+                writer.println(String.format("<tr>"));
+                {
+                    writer.println(String.format("<td>Min time:</td>"));
+                }
+                writer.println(String.format("</tr>"));
+                writer.println(String.format("<tr>"));
+                {
+                    writer.println(String.format("<td>Max time:</td>"));
+                }
+                writer.println(String.format("</tr>"));        
+                writer.println(String.format("</table>"));
+            }
+            writer.println(String.format("</td>"));
+            
+            //
+            // Values
+            //
+            writer.println(String.format("<td>"));
+            {
+                writer.println(String.format("<table>"));
+                writer.println(String.format("<tr>"));
+                {
+                    writer.println(String.format("<td>%d</td>", sw.size()));
+                }
+                writer.println(String.format("</tr>"));
+                writer.println(String.format("<tr>"));
+                {
+                    writer.println(String.format("<td>%d</td>", sw.getTotalTime()));
+                }
+                writer.println(String.format("</tr>"));
+                writer.println(String.format("<tr>"));
+                {
+                    writer.println(String.format("<td>%.3f</td>", sw.getAverageTime()));
+                }
+                writer.println(String.format("</tr>"));
+                writer.println(String.format("<tr>"));
+                {
+                    writer.println(String.format("<td>%d</td>", sw.getMinTime()));
+                }
+                writer.println(String.format("</tr>"));
+                writer.println(String.format("<tr>"));
+                {
+                    writer.println(String.format("<td>%d</td>", sw.getMaxTime()));
+                }
+                writer.println(String.format("</tr>"));        
+                writer.println(String.format("</table>"));                
+            }
+            writer.println(String.format("</td>"));
+        }        
+        writer.println(String.format("</tr>"));        
         writer.println(String.format("</table>"));
+        
+        
+        
+        writer.println(String.format("<p><b>Last Account:</b></p>"));
+        writer.println(String.format("<p>%s</p>", ToStringBuilder.reflectionToString(account)));        
+        
         writer.println("</body>");
         writer.println("</html>");
     }

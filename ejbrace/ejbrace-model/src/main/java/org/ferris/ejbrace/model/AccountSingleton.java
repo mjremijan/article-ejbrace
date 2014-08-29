@@ -12,10 +12,10 @@ public class AccountSingleton {
 
     public static class AccountHolder {
         private static Account instance;
-        {
+        static {
             instance = new Account(UUID.randomUUID().toString());
             {
-                final Address address = new Address(UUID.randomUUID().toString());
+                Address address = new Address(UUID.randomUUID().toString());
                 address.setAddress1("123 Main Street");
                 address.setAddress2("#100");
                 address.setCity("City");
@@ -24,7 +24,7 @@ public class AccountSingleton {
                 instance.addAddress(address);
             }
             {
-                final Address address = new Address(UUID.randomUUID().toString());
+                Address address = new Address(UUID.randomUUID().toString());
                 address.setAddress1("456 Summer St.");
                 address.setCity("Springfield");
                 address.setState("AX");
@@ -32,7 +32,7 @@ public class AccountSingleton {
                 instance.addAddress(address);
             }
             {
-                final Address address = new Address(UUID.randomUUID().toString());
+                Address address = new Address(UUID.randomUUID().toString());
                 address.setAddress1("456 Winter Blvd.");
                 address.setAddress2("");
                 address.setCity("Greenville");
@@ -41,17 +41,17 @@ public class AccountSingleton {
                 instance.addAddress(address);
             }
             {
-                final Phone phone = new Phone(UUID.randomUUID().toString(), Work, "145-696-8855");
+                Phone phone = new Phone(UUID.randomUUID().toString(), Work, "145-696-8855");
                 phone.setDescription("iPhone8 (work)");
                 instance.addPhone(phone);
             }
             {
-                final Phone phone = new Phone(UUID.randomUUID().toString(), Mobile, "555-6914");
+                Phone phone = new Phone(UUID.randomUUID().toString(), Mobile, "555-6914");
                 phone.setDescription("My Android");
                 instance.addPhone(phone);
             }
             {
-                final Phone phone = new Phone(UUID.randomUUID().toString(), Home, "222-335-6174");
+                Phone phone = new Phone(UUID.randomUUID().toString(), Home, "222-335-6174");
                 phone.setDescription("Lan line?");
                 instance.addPhone(phone);
             }
