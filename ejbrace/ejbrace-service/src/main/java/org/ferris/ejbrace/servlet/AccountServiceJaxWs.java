@@ -11,6 +11,7 @@ public class AccountServiceJaxWs {
 
     @WebMethod
     public Account getAccount() {
+        System.out.println("ENTER JaxWs getAccount()");
         return AccountSingleton.getAccount();
     }
 }
