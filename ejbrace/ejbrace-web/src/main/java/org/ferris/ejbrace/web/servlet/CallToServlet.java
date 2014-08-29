@@ -23,7 +23,7 @@ public class CallToServlet extends HttpServlet
     {
         private URL url;
         public ByServlet() throws MalformedURLException {
-            url = new URL("http://remijan-server:8080/something/AccountServiceServlet");
+            url = new URL("http://remijan-server:8080/ejbrace-service/AccountServiceServlet");
         }
         
         @Override

@@ -29,7 +29,7 @@ public class CallToJaxRs extends HttpServlet
     {
         private String url;
         public ByJaxRs() {
-            url = "http://remijan-server:8080/something/AccountServiceJaxRs";
+            url = "http://remijan-server:8080/ejbrace-service/AccountServiceJaxRs";
         }
         
         @Override

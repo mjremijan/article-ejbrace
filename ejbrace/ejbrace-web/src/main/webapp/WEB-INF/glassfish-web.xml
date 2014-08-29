@@ -11,7 +11,7 @@
         
         <!-- Bean is remote so IIOP config to get it -->
         <jndi-name>
-            corbaname:iiop:remijan-server:3700#java:global/ejbrace-service/ejb/AccountServiceEjb!org.ferris.ejbrace.ejb.AccountService    										  
+            corbaname:iiop:remijan-server:3700#java:global/ejbrace-business/ejb/AccountServiceEjb!org.ferris.ejbrace.ejb.AccountService    										  
         </jndi-name>
     </ejb-ref>     
 </glassfish-web-app>
