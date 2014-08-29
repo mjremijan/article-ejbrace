@@ -44,7 +44,7 @@
                         <addMavenDescriptor>false</addMavenDescriptor>
                     </archive>
                     <version>7</version>
-                    <applicationName>ejbrace-service</applicationName>  
+                    <applicationName>ejbrace-service</applicationName> 
                     <displayName>${project.build.finalName}</displayName>                  
                     <modules>
                         <ejbModule>
