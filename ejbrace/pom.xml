@@ -16,14 +16,20 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
+        <ferris.ejbrace-model.version>1.0.0.0-SNAPSHOT</ferris.ejbrace-model.version>
     </properties>
     <modules>
+        <!-- Shared -->
         <module>ejbrace-model</module>
-        <module>ejbrace-ejb</module>        
+        
+        <!-- Service tier -->
+        <module>ejbrace-ejb</module>      
+        <module>ejbrace-servlet</module>  
         <module>ejbrace-service-ear</module>
+        
+        <!-- Presentation tier -->
         <module>ejbrace-web</module>
         <module>ejbrace-web-ear</module>
-        <module>ejbrace-servlet</module>
   </modules>
 
     <dependencyManagement>

@@ -16,7 +16,6 @@
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
-        <ferris.ejbrace-model.version>1.0.0.0-SNAPSHOT</ferris.ejbrace-model.version>
     </properties>
 
     <dependencies>

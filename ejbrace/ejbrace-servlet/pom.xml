@@ -23,6 +23,12 @@
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.ferris.ejbrace</groupId>
+            <artifactId>ejbrace-model</artifactId>
+            <version>${ferris.ejbrace-model.version}</version>
+            <type>jar</type>
+        </dependency>
     </dependencies>
 
     <build>
