@@ -1,4 +1,4 @@
-package org.ferris.ejbrace.web.servlet;
+package org.ferris.ejbrace.web.net.http;
 
 import java.io.IOException;
 import java.io.InputStream;

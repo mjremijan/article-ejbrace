@@ -22,8 +22,8 @@ import org.ferris.ejbrace.web.util.Stopwatch;
  *
  * @author Michael Remijan mjremijan@yahoo.com @mjremijan
  */
-@WebServlet("/ServletCallToJaxRs")
-public class ServletCallToJaxRs extends HttpServlet 
+@WebServlet("/CallToJaxRs")
+public class CallToJaxRs extends HttpServlet 
 {
     class ByJaxRs extends ServiceTemplateMethod 
     {
@@ -44,7 +44,7 @@ public class ServletCallToJaxRs extends HttpServlet
 
         @Override
         public String getName() {
-            return ServletCallToJaxRs.class.getName();
+            return CallToJaxRs.class.getName();
         }
     }
     

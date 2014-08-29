@@ -1,5 +1,6 @@
 package org.ferris.ejbrace.web.servlet;
 
+import org.ferris.ejbrace.web.net.http.HttpClientFascade;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -15,8 +16,8 @@ import org.ferris.ejbrace.model.Account;
  *
  * @author Michael Remijan mjremijan@yahoo.com @mjremijan
  */
-@WebServlet("/ServletCallToServlet")
-public class ServletCallToServlet extends HttpServlet 
+@WebServlet("/CallToServlet")
+public class CallToServlet extends HttpServlet 
 {
     class ByServlet extends ServiceTemplateMethod 
     {
@@ -37,7 +38,7 @@ public class ServletCallToServlet extends HttpServlet
 
         @Override
         public String getName() {
-            return ServletCallToServlet.class.getName();
+            return CallToServlet.class.getName();
         }
     }
     
