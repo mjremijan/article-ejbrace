@@ -22,14 +22,14 @@ public class AccountSingleton {
             instance = new LinkedList<>();
             
             
-            for (int i=0, imax=random.nextInt(100) + 1; i<imax; i++) 
+            for (int i=0, imax=55; i<imax; i++) 
             {
                 // New Account
                 Account account
                     = new Account(UUID.randomUUID().toString());
                 
                 // Addresses
-                for (int j=0, jmax=random.nextInt(4) + 1; j<jmax; j++) 
+                for (int j=0, jmax=4; j<jmax; j++) 
                 {
                     Address address = new Address(UUID.randomUUID().toString());
                     address.setAddress1(UUID.randomUUID().toString());
@@ -41,7 +41,7 @@ public class AccountSingleton {
                 }
                 
                 // Phone numbers
-                for (int k=0, kmax=random.nextInt(5) + 1; k<kmax; k++)
+                for (int k=0, kmax=5; k<kmax; k++)
                 {
                     Phone phone = new Phone(UUID.randomUUID().toString(), PhoneType.values()[random.nextInt(3)], UUID.randomUUID().toString());
                     phone.setDescription(UUID.randomUUID().toString());

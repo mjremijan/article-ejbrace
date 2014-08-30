@@ -33,6 +33,7 @@
             <artifactId>ejbrace-model</artifactId>
             <version>${ferris.ejbrace-model.version}</version>
             <type>jar</type>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 

@@ -16,8 +16,8 @@ import org.ferris.ejbrace.model.Account;
  *
  * @author Michael Remijan mjremijan@yahoo.com @mjremijan
  */
-@WebServlet("/CallToEjb")
-public class CallToEjb extends HttpServlet 
+@WebServlet("/CallToEjbRemote")
+public class CallToEjbRemote extends HttpServlet 
 {
     private final String redLookup = "java:comp/env/ejb/Red";
     
@@ -40,7 +40,7 @@ public class CallToEjb extends HttpServlet
 
         @Override
         public String getName() {
-            return CallToEjb.class.getName();
+            return CallToEjbRemote.class.getName();
         }
     }
 
