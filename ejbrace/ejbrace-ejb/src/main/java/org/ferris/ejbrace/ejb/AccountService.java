@@ -1,5 +1,6 @@
 package org.ferris.ejbrace.ejb;
 
+import java.util.List;
 import javax.ejb.Remote;
 import org.ferris.ejbrace.model.Account;
 
@@ -9,5 +10,5 @@ import org.ferris.ejbrace.model.Account;
  */
 @Remote
 public interface AccountService {
-    Account getAccount();
+    List<Account> getAccounts();
 }

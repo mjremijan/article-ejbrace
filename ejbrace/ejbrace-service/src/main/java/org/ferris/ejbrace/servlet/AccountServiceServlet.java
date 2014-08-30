@@ -22,7 +22,7 @@ public class AccountServiceServlet extends HttpServlet
         response.setContentType("application/x-java-serialized-object");
         final OutputStream os = response.getOutputStream();
         final ObjectOutputStream oos = new ObjectOutputStream(os);
-        oos.writeObject(AccountSingleton.getAccount());
+        oos.writeObject(AccountSingleton.getAccounts());
     }
 
 }

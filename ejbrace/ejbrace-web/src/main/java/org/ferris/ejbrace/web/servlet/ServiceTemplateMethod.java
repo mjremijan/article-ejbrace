@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.servlet.ServletException;
@@ -27,20 +28,20 @@ public abstract class ServiceTemplateMethod
         Stopwatch sw 
             = new Stopwatch();
         
-        Account a 
+        List<Account> accounts 
             = null;
         
         for (int i = 1, imax=numberOfCalls.intValue(); i <= imax; i++) {
             System.out.printf("Make call %d of %d", i, imax);
             sw.start();
-            a = getAccount();
+            accounts = getAccounts();
             sw.stop();
         }
 
-        print(response, sw, a);
+        print(response, sw, accounts);
     }
     
-    private final void print(ServletResponse response, Stopwatch sw, Account account) throws IOException 
+    private final void print(ServletResponse response, Stopwatch sw, List<Account> accounts) throws IOException 
     {
         PrintWriter writer = response.getWriter();
         writer.println("<html>");
@@ -127,8 +128,9 @@ public abstract class ServiceTemplateMethod
         
         
         
-        writer.println(String.format("<p><b>Last Account:</b></p>"));
-        writer.println(String.format("<p>%s</p>", ToStringBuilder.reflectionToString(account)));        
+        writer.println(String.format("<p><b>Last List&lt;Account&gt;:</b></p>"));
+        writer.println(String.format("<p>size = %d</p>", accounts.size()));
+        writer.println(String.format("<p>get(0) = %s</p>", ToStringBuilder.reflectionToString(accounts.get(0))));        
         
         writer.println("</body>");
         writer.println("</html>");
@@ -164,6 +166,6 @@ public abstract class ServiceTemplateMethod
         return numberOfCalls;
     }
     
-    public abstract Account getAccount();
+    public abstract List<Account> getAccounts();
     public abstract String getName();
 }

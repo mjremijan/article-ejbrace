@@ -1,9 +1,7 @@
 package org.ferris.ejbrace.web.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
@@ -14,9 +12,9 @@ import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Invocation.Builder;
 import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
 import org.ferris.ejbrace.model.Account;
-import org.ferris.ejbrace.web.util.Stopwatch;
 
 /**
  *
@@ -33,13 +31,13 @@ public class CallToJaxRs extends HttpServlet
         }
         
         @Override
-        public Account getAccount() {
+        public List<Account> getAccounts() {
             Client client = ClientBuilder.newClient();
             WebTarget myResource = client.target(url);
             Builder myBuilder = myResource.request(MediaType.APPLICATION_JSON);
-            Account myAccount = myBuilder.get(Account.class);
+            List<Account> myAccounts = myBuilder.get(new GenericType<List<Account>>(){});
             client.close();
-            return myAccount;
+            return myAccounts;
         }
 
         @Override

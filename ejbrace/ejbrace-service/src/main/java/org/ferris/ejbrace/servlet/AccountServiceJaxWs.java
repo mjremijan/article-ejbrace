@@ -1,5 +1,6 @@
 package org.ferris.ejbrace.servlet;
 
+import java.util.List;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 import org.ferris.ejbrace.model.Account;
@@ -10,8 +11,8 @@ import org.ferris.ejbrace.model.AccountSingleton;
 public class AccountServiceJaxWs {
 
     @WebMethod
-    public Account getAccount() {
-        System.out.println("ENTER JaxWs getAccount()");
-        return AccountSingleton.getAccount();
+    public List<Account> getAccount() {
+        System.out.println("ENTER JaxWs getAccounts()");
+        return AccountSingleton.getAccounts();
     }
 }

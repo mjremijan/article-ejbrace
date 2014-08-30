@@ -1,6 +1,7 @@
 package org.ferris.ejbrace.web.servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -33,8 +34,8 @@ public class CallToEjb extends HttpServlet
     class ByEjb extends ServiceTemplateMethod 
     {
         @Override
-        public Account getAccount() {
-            return accountService.getAccount();
+        public List<Account> getAccounts() {
+            return accountService.getAccounts();
         }
 
         @Override

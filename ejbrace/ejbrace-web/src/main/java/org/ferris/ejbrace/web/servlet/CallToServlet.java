@@ -4,6 +4,7 @@ import org.ferris.ejbrace.web.net.http.HttpClientFascade;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
@@ -27,10 +28,10 @@ public class CallToServlet extends HttpServlet
         }
         
         @Override
-        public Account getAccount() {
+        public List<Account> getAccounts() {
             try (HttpClientFascade hcf = new HttpClientFascade(url);) {
-                Account myAccount = (Account) hcf.get().getResponseAsObject();
-                return myAccount;
+                List<Account> myAccounts = (List<Account>) hcf.get().getResponseAsObject();
+                return myAccounts;
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
