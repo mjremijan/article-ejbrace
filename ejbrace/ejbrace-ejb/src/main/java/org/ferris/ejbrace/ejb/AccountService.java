@@ -11,4 +11,6 @@ import org.ferris.ejbrace.model.Account;
 @Remote
 public interface AccountService {
     List<Account> getAccounts();
+    List<Account> getAccountsTransactionNever();
+    List<Account> getAccountsTransactionSupports();
 }
