@@ -55,7 +55,7 @@ public class CallToJaxWs extends HttpServlet
     @Override
     public void service(ServletRequest request, ServletResponse response) throws ServletException, IOException 
     {
-        ByJaxWs byJaxRs = new ByJaxWs();
-        byJaxRs.service(response);
+        ByJaxWs byJaxWs = new ByJaxWs();
+        byJaxWs.service(response);
     }
 }
