@@ -33,7 +33,6 @@
             <artifactId>ejbrace-model</artifactId>
             <version>${ferris.ejbrace-model.version}</version>
             <type>jar</type>
-            <scope>provided</scope>
         </dependency>
     </dependencies>
 
@@ -51,6 +50,24 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.jvnet.jax-ws-commons</groupId>
+                <artifactId>jaxws-maven-plugin</artifactId>
+                <version>2.3.1-b03</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>wsgen</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <sei>org.ferris.ejbrace.servlet.AccountServiceJaxWs</sei>
+                    <genWsdl>true</genWsdl>
+                    <inlineSchemas>true</inlineSchemas>
+                    <keep>true</keep>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

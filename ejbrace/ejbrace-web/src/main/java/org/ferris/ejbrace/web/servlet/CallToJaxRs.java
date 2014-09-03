@@ -23,7 +23,7 @@ import org.ferris.ejbrace.model.Account;
 @WebServlet("/CallToJaxRs")
 public class CallToJaxRs extends HttpServlet 
 {
-    class ByJaxRs extends ServiceTemplateMethod 
+    class ByJaxRs extends ServiceTemplateMethod<Account>
     {
         private String url;
         public ByJaxRs() {

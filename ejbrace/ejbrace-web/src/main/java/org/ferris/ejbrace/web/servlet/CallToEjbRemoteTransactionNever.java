@@ -31,7 +31,7 @@ public class CallToEjbRemoteTransactionNever extends HttpServlet
     @EJB(lookup = redLookup)
     AccountService accountService;
     
-    class ByEjb extends ServiceTemplateMethod 
+    class ByEjb extends ServiceTemplateMethod<Account>
     {
         @Override
         public List<Account> getAccounts() {

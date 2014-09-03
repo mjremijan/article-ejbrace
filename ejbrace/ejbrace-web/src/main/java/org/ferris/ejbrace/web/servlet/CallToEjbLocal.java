@@ -23,7 +23,7 @@ public class CallToEjbLocal extends HttpServlet
     @EJB
     AccountServiceLocal accountService;
     
-    class ByEjb extends ServiceTemplateMethod 
+    class ByEjb extends ServiceTemplateMethod<Account>
     {
         @Override
         public List<Account> getAccounts() {

@@ -59,6 +59,25 @@
                 <artifactId>maven-war-plugin</artifactId>
             </plugin>
             <plugin>
+                <groupId>org.jvnet.jax-ws-commons</groupId>
+                <artifactId>jaxws-maven-plugin</artifactId>
+                <version>2.3.1-b03</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <wsdlDirectory>${basedir}/src/main/webapp/WEB-INF/wsdl</wsdlDirectory>
+                <wsdlFiles>
+                    <wsdlFile>AccountServiceJaxWsService.wsdl</wsdlFile>
+                </wsdlFiles>
+                <sourceDestDir>${project.build.directory}/generated-sources</sourceDestDir>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
                 <executions>

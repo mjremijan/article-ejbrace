@@ -20,7 +20,7 @@ import org.ferris.ejbrace.model.Account;
 @WebServlet("/CallToServlet")
 public class CallToServlet extends HttpServlet 
 {
-    class ByServlet extends ServiceTemplateMethod 
+    class ByServlet extends ServiceTemplateMethod<Account>
     {
         private URL url;
         public ByServlet() throws MalformedURLException {

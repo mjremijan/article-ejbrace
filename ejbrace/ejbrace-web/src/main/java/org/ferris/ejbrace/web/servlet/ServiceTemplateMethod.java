@@ -17,7 +17,7 @@ import org.ferris.ejbrace.web.util.Stopwatch;
  *
  * @author Michael Remijan mjremijan@yahoo.com @mjremijan
  */
-public abstract class ServiceTemplateMethod 
+public abstract class ServiceTemplateMethod<T>
 {
 
     public void service(ServletResponse response) throws ServletException, IOException 
@@ -28,7 +28,7 @@ public abstract class ServiceTemplateMethod
         Stopwatch sw 
             = new Stopwatch();
         
-        List<Account> accounts 
+        List<T> accounts 
             = null;
         
         for (int i = 1, imax=numberOfCalls.intValue(); i <= imax; i++) {
@@ -41,7 +41,7 @@ public abstract class ServiceTemplateMethod
         print(response, sw, accounts);
     }
     
-    private final void print(ServletResponse response, Stopwatch sw, List<Account> accounts) throws IOException 
+    private final void print(ServletResponse response, Stopwatch sw, List<T> accounts) throws IOException 
     {
         PrintWriter writer = response.getWriter();
         writer.println("<html>");
@@ -167,6 +167,6 @@ public abstract class ServiceTemplateMethod
         return numberOfCalls;
     }
     
-    public abstract List<Account> getAccounts();
+    public abstract List<T> getAccounts();
     public abstract String getName();
 }
