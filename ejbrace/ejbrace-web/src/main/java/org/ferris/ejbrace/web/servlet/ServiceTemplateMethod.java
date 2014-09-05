@@ -9,29 +9,28 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.ServletResponse;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.ferris.ejbrace.model.Account;
 import org.ferris.ejbrace.web.util.Stopwatch;
 
 /**
- *
+ * 
  * @author Michael Remijan mjremijan@yahoo.com @mjremijan
  */
-public abstract class ServiceTemplateMethod<T>
-{
+public abstract class ServiceTemplateMethod<T, H extends HtmlFormatter<T>> {
+    H htmlFormatter;
 
-    public void service(ServletResponse response) throws ServletException, IOException 
-    {
-        Integer numberOfCalls 
-            = getNumberOfCalls();
-        
-        Stopwatch sw 
-            = new Stopwatch();
-        
-        List<T> accounts 
-            = null;
-        
-        for (int i = 1, imax=numberOfCalls.intValue(); i <= imax; i++) {
+    public ServiceTemplateMethod(H htmlFormatter) {
+        this.htmlFormatter = htmlFormatter;
+    }
+
+    public void service(ServletResponse response) throws ServletException,
+            IOException {
+        Integer numberOfCalls = getNumberOfCalls();
+
+        Stopwatch sw = new Stopwatch();
+
+        List<T> accounts = null;
+
+        for (int i = 1, imax = numberOfCalls.intValue(); i <= imax; i++) {
             System.out.printf("Make call %d of %d", i, imax);
             sw.start();
             accounts = getAccounts();
@@ -40,17 +39,20 @@ public abstract class ServiceTemplateMethod<T>
 
         print(response, sw, accounts);
     }
-    
-    private final void print(ServletResponse response, Stopwatch sw, List<T> accounts) throws IOException 
-    {
+
+    private final void print(ServletResponse response, Stopwatch sw,
+            List<T> accounts) throws IOException {
         PrintWriter writer = response.getWriter();
         writer.println("<html>");
-        writer.println(String.format("<body style=\"%s\">", "background-color: rgb(191,191,191);"));
+        writer.println(String.format("<body style=\"%s\">",
+                "background-color: rgb(191,191,191);"));
         writer.println(String.format("<h1>%s</h1>", getName()));
         writer.println(String.format("<p><a href='index.html'>Home</a></p>"));
-        writer.println(String.format("<p>Time: \"%s\"</p>", new SimpleDateFormat("MM-dd-yyyy hh:mm:ss a").format(Calendar.getInstance().getTime())));
+        writer.println(String.format("<p>Time: \"%s\"</p>",
+                new SimpleDateFormat("MM-dd-yyyy hh:mm:ss a").format(Calendar
+                        .getInstance().getTime())));
         writer.println("<p>Values are in milliseconds.</p>");
-        
+
         writer.println(String.format("<table>"));
         writer.println(String.format("<tr>"));
         {
@@ -84,11 +86,11 @@ public abstract class ServiceTemplateMethod<T>
                 {
                     writer.println(String.format("<td>Max time:</td>"));
                 }
-                writer.println(String.format("</tr>"));        
+                writer.println(String.format("</tr>"));
                 writer.println(String.format("</table>"));
             }
             writer.println(String.format("</td>"));
-            
+
             //
             // Values
             //
@@ -102,12 +104,14 @@ public abstract class ServiceTemplateMethod<T>
                 writer.println(String.format("</tr>"));
                 writer.println(String.format("<tr>"));
                 {
-                    writer.println(String.format("<td>%d</td>", sw.getTotalTime()));
+                    writer.println(String.format("<td>%d</td>",
+                            sw.getTotalTime()));
                 }
                 writer.println(String.format("</tr>"));
                 writer.println(String.format("<tr>"));
                 {
-                    writer.println(String.format("<td>%.3f</td>", sw.getAverageTime()));
+                    writer.println(String.format("<td>%.3f</td>",
+                            sw.getAverageTime()));
                 }
                 writer.println(String.format("</tr>"));
                 writer.println(String.format("<tr>"));
@@ -119,41 +123,37 @@ public abstract class ServiceTemplateMethod<T>
                 {
                     writer.println(String.format("<td>%d</td>", sw.getMaxTime()));
                 }
-                writer.println(String.format("</tr>"));        
-                writer.println(String.format("</table>"));                
+                writer.println(String.format("</tr>"));
+                writer.println(String.format("</table>"));
             }
             writer.println(String.format("</td>"));
-        }        
-        writer.println(String.format("</tr>"));        
+        }
+        writer.println(String.format("</tr>"));
         writer.println(String.format("</table>"));
-        
-        
-        
+
         writer.println(String.format("<p><b>Last List&lt;Account&gt;:</b></p>"));
         writer.println(String.format("<p>size = %d</p>", accounts.size()));
-        writer.println(String.format("<p>get(0) = %s</p>", ToStringBuilder.reflectionToString(accounts.get(0))));        
-        
+        writer.println(htmlFormatter.toHtml((accounts.get(0))));
+
         writer.println("</body>");
         writer.println("</html>");
     }
-    
-    
-    private final Integer getNumberOfCalls()
-    {
+
+    private final Integer getNumberOfCalls() {
         Integer numberOfCalls = null;
         if (numberOfCalls == null) {
             try {
-              InitialContext ic = new InitialContext();
-              numberOfCalls = (Integer) ic.lookup("numberOfCalls");
+                InitialContext ic = new InitialContext();
+                numberOfCalls = (Integer) ic.lookup("numberOfCalls");
             } catch (NamingException e) {
                 System.out.printf("NUMBER_OF_CALLS: failed Integer lookup");
             }
         }
         if (numberOfCalls == null) {
             try {
-              InitialContext ic = new InitialContext();
-              String s = (String) ic.lookup("numberOfCalls");
-              numberOfCalls = Integer.parseInt(s);
+                InitialContext ic = new InitialContext();
+                String s = (String) ic.lookup("numberOfCalls");
+                numberOfCalls = Integer.parseInt(s);
             } catch (NamingException e) {
                 System.out.printf("NUMBER_OF_CALLS: failed String lookup");
             }
@@ -162,11 +162,12 @@ public abstract class ServiceTemplateMethod<T>
             System.out.printf("NUMBER_OF_CALLS: default!");
             numberOfCalls = 100;
         }
-        
+
         System.out.printf("numberOfCalls = %d", numberOfCalls);
         return numberOfCalls;
     }
-    
+
     public abstract List<T> getAccounts();
+
     public abstract String getName();
 }
