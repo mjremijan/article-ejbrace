@@ -31,7 +31,7 @@ public class CallToJaxWs extends HttpServlet
     {
         private String url;
         public ByJaxWs() {
-            url = "http://tim-laptop:8080/ejbrace-service/AccountServiceJaxWsService";
+            url = "http://remijan-server:8080/ejbrace-service/AccountServiceJaxWsService";
         }
         
         @Override
