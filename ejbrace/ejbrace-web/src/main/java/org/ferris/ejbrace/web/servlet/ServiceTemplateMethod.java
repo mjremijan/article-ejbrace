@@ -47,7 +47,7 @@ public abstract class ServiceTemplateMethod<T>
         writer.println("<html>");
         writer.println(String.format("<body style=\"%s\">", "background-color: rgb(191,191,191);"));
         writer.println(String.format("<h1>%s</h1>", getName()));
-        writer.println(String.format("<p><a href='index.html'>Home</a></p>"));
+        writer.println(String.format("<p><a style='color:blue;' href='index.html'>Home</a></p>"));
         writer.println(String.format("<p>Time: \"%s\"</p>", new SimpleDateFormat("MM-dd-yyyy hh:mm:ss a").format(Calendar.getInstance().getTime())));
         writer.println("<p>Values are in milliseconds.</p>");
         
