@@ -8,12 +8,6 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.Invocation.Builder;
-import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.GenericType;
-import javax.ws.rs.core.MediaType;
 import javax.xml.ws.BindingProvider;
 
 import org.ferris.ejbrace.servlet.Account;
@@ -30,10 +24,9 @@ public class CallToJaxWs extends HttpServlet
     class ByJaxWs extends ServiceTemplateMethod<Account, JaxbAccountHtmlFormatter>
     {
         private String url;
-        public ByJaxWs() {
-            url = "http://remijan-server:8080/ejbrace-service/AccountServiceJaxWsService";
+        public ByJaxWs() {            
             super(new JaxbAccountHtmlFormatter());
-            url = "http://tim-laptop:8080/ejbrace-service/AccountServiceJaxWsService";
+            url = "http://remijan-server:8080/ejbrace-service/AccountServiceJaxWsService";
         }
         
         @Override

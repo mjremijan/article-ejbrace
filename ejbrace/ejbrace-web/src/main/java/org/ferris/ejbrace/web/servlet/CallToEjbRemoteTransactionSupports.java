@@ -23,8 +23,6 @@ public class CallToEjbRemoteTransactionSupports extends HttpServlet
     
     // Remember, this is a 
     //   
-    //  !! LOCAL JNDI LOOKUP NAME !!
-    //
     // !! LOCAL JNDI LOOKUP NAME !!
     //
     // and this lookup name is only used by this WAR. How this
