@@ -19,7 +19,7 @@ import org.ferris.ejbrace.model.Account;
 @WebServlet("/CallToEjbRemoteTransactionNever")
 public class CallToEjbRemoteTransactionNever extends HttpServlet 
 {
-    private final String redLookup = "java:comp/env/ejb/Red";
+    private final String redLookup = "java:module/env/ejb/Red";
     
     // Remember, this is a 
     //   
