@@ -13,7 +13,7 @@ import org.ferris.ejbrace.ejb.AccountService;
 import org.ferris.ejbrace.model.Account;
 
 /**
- *
+ * 
  * @author Michael Remijan mjremijan@yahoo.com @mjremijan
  */
 @WebServlet("/CallToEjbRemote")
@@ -25,14 +25,20 @@ public class CallToEjbRemote extends HttpServlet
     //   
     //  !! LOCAL JNDI LOOKUP NAME !!
     //
-    // and this lookup name is only used by this WAR.  How this 
+    // !! LOCAL JNDI LOOKUP NAME !!
+    //
+    // and this lookup name is only used by this WAR. How this
     // local lookup name maps to a real EJB instance is configured
     // in web.xml and glassfish-web.xml
     @EJB(lookup = redLookup)
     AccountService accountService;
-    
-    class ByEjb extends ServiceTemplateMethod<Account>
-    {
+
+    class ByEjb extends
+            ServiceTemplateMethod<Account, PojoAccountHtmlFormatter> {
+        public ByEjb() {
+            super(new PojoAccountHtmlFormatter());
+        }
+
         @Override
         public List<Account> getAccounts() {
             return accountService.getAccounts();
@@ -45,8 +51,8 @@ public class CallToEjbRemote extends HttpServlet
     }
 
     @Override
-    public void service(ServletRequest request, ServletResponse response) throws ServletException, IOException 
-    {
+    public void service(ServletRequest request, ServletResponse response)
+            throws ServletException, IOException {
         ByEjb byEjb = new ByEjb();
         byEjb.service(response);
     }

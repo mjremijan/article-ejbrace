@@ -14,23 +14,26 @@ import javax.servlet.http.HttpServlet;
 import org.ferris.ejbrace.model.Account;
 
 /**
- *
+ * 
  * @author Michael Remijan mjremijan@yahoo.com @mjremijan
  */
 @WebServlet("/CallToServlet")
-public class CallToServlet extends HttpServlet 
-{
-    class ByServlet extends ServiceTemplateMethod<Account>
-    {
+public class CallToServlet extends HttpServlet {
+    class ByServlet extends
+            ServiceTemplateMethod<Account, PojoAccountHtmlFormatter> {
         private URL url;
+
         public ByServlet() throws MalformedURLException {
-            url = new URL("http://remijan-server:8080/ejbrace-service/AccountServiceServlet");
+            super(new PojoAccountHtmlFormatter());
+            url = new URL(
+                    "http://remijan-server:8080/ejbrace-service/AccountServiceServlet");
         }
-        
+
         @Override
         public List<Account> getAccounts() {
             try (HttpClientFascade hcf = new HttpClientFascade(url);) {
-                List<Account> myAccounts = (List<Account>) hcf.get().getResponseAsObject();
+                List<Account> myAccounts = (List<Account>) hcf.get()
+                        .getResponseAsObject();
                 return myAccounts;
             } catch (Exception e) {
                 throw new RuntimeException(e);
@@ -42,10 +45,10 @@ public class CallToServlet extends HttpServlet
             return CallToServlet.class.getName();
         }
     }
-    
+
     @Override
-    public void service(ServletRequest request, ServletResponse response) throws ServletException, IOException 
-    {
+    public void service(ServletRequest request, ServletResponse response)
+            throws ServletException, IOException {
         ByServlet byServlet = new ByServlet();
         byServlet.service(response);
     }

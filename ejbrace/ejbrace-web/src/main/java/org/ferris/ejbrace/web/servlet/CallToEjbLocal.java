@@ -14,17 +14,20 @@ import org.ferris.ejbrace.model.Account;
 import org.ferris.ejbrace.web.ejb.AccountServiceLocal;
 
 /**
- *
+ * 
  * @author Michael Remijan mjremijan@yahoo.com @mjremijan
  */
 @WebServlet("/CallToEjbLocal")
-public class CallToEjbLocal extends HttpServlet 
-{
+public class CallToEjbLocal extends HttpServlet {
     @EJB
     AccountServiceLocal accountService;
-    
-    class ByEjb extends ServiceTemplateMethod<Account>
-    {
+
+    class ByEjb extends
+            ServiceTemplateMethod<Account, PojoAccountHtmlFormatter> {
+        public ByEjb() {
+            super(new PojoAccountHtmlFormatter());
+        }
+
         @Override
         public List<Account> getAccounts() {
             return accountService.getAccounts();
@@ -37,8 +40,8 @@ public class CallToEjbLocal extends HttpServlet
     }
 
     @Override
-    public void service(ServletRequest request, ServletResponse response) throws ServletException, IOException 
-    {
+    public void service(ServletRequest request, ServletResponse response)
+            throws ServletException, IOException {
         ByEjb byEjb = new ByEjb();
         byEjb.service(response);
     }

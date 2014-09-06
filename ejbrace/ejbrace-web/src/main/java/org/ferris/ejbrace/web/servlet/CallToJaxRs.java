@@ -23,10 +23,11 @@ import org.ferris.ejbrace.model.Account;
 @WebServlet("/CallToJaxRs")
 public class CallToJaxRs extends HttpServlet 
 {
-    class ByJaxRs extends ServiceTemplateMethod<Account>
+    class ByJaxRs extends ServiceTemplateMethod<Account, PojoAccountHtmlFormatter>
     {
         private String url;
         public ByJaxRs() {
+            super(new PojoAccountHtmlFormatter());
             url = "http://remijan-server:8080/ejbrace-service/resources/AccountServiceJaxRs/Get";
         }
         

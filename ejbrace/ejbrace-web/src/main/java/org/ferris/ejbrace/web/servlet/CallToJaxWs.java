@@ -27,11 +27,13 @@ import org.ferris.ejbrace.servlet.AccountServiceJaxWsService;
 @WebServlet("/CallToJaxWs")
 public class CallToJaxWs extends HttpServlet 
 {
-    class ByJaxWs extends ServiceTemplateMethod<Account>
+    class ByJaxWs extends ServiceTemplateMethod<Account, JaxbAccountHtmlFormatter>
     {
         private String url;
         public ByJaxWs() {
             url = "http://remijan-server:8080/ejbrace-service/AccountServiceJaxWsService";
+            super(new JaxbAccountHtmlFormatter());
+            url = "http://tim-laptop:8080/ejbrace-service/AccountServiceJaxWsService";
         }
         
         @Override
